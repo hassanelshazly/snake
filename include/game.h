@@ -19,14 +19,34 @@ public:
     void start();
     QGraphicsScene* scene;
     int player;
+    ~Game();
 
 public slots:
     void hide_btn();
-    void updateGame(); //main function triggered from timer
-    bool ateFruit(Snake *snk); //check if any snake->snakeBlock collides with any fruit
-    void endgame(); //close the game
-    void draw(QGraphicsScene * sence); //update graphics
+
+    /**
+     * @brief main function triggered from timer
+     */
+    void updateGame();
+
+    /**
+     * @brief check if any snake->snakeBlock collides with any fruit
+     */
+    bool ateFruit(Snake *snk);
+
+    /**
+     * @brief close the game
+     */
+    void endgame();
+
+    /**
+     * @brief update graphics
+     */
+    void draw(QGraphicsScene * sence);
+
     void updatedir();
+
+    friend void* start_server(void* null);
 
 private:
     int pre_dir;

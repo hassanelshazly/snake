@@ -1,5 +1,5 @@
-#include "game.h"
-#include "tcp.h"
+#include "include/game.h"
+#include "include/tcp.h"
 #include <QApplication>
 
 Game *w;

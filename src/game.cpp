@@ -1,8 +1,15 @@
-#include "game.h"
+#include "include/game.h"
 
 #include <QDebug>
 #include <sstream>
+#include <stdlib.h>
+#include <QProcess>
+#include <QString>
 #include <QByteArray>
+void* start_server(void* parent) {
+    system("python3 '/mnt/e/Workshops/ROV/Crash Course/Snake/server/server.py'");
+}
+
 Game::Game(QWidget *parent)
 {
     // init connection
@@ -14,6 +21,10 @@ Game::Game(QWidget *parent)
 
     pre_dir2 = 2;
     dir2 = 1;
+
+    // start server
+    pthread_t server;
+    pthread_create(&server, 0, &start_server,0);
 
     // set bg
     scene = new QGraphicsScene(0,0,500,500);
@@ -32,6 +43,8 @@ Game::Game(QWidget *parent)
     connect(btn, SIGNAL(clicked()), this, SLOT(hide_btn()));
 
 }
+
+
 
 void Game::keyPressEvent(QKeyEvent *event)
 {
@@ -97,6 +110,11 @@ void Game::start()
 
     snake1 = new Snake(1,1);
     snake2 = new Snake(1,23);
+}
+
+Game::~Game()
+{
+     conn->send("h");
 }
 
 void Game::hide_btn() {

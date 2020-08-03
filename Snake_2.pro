@@ -12,14 +12,14 @@ TARGET = Snake_2
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        game.cpp \
-    snake.cpp \
-    tcp.cpp
+SOURCES += src/main.cpp\
+        src/game.cpp \
+    src/snake.cpp \
+    src/tcp.cpp
 
-HEADERS  += game.h \
-    snake.h \
-    tcp.h
+HEADERS  += include/game.h \
+    include/snake.h \
+    include/tcp.h
 
 RESOURCES += \
     resource.qrc

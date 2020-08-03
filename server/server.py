@@ -8,10 +8,11 @@ def player1Sync():
     while True:
         try:
             data = player1.recv(1).decode()
-            # if not data:  # player disconnected, Ending Game
-            #     print("player disconnected, ending game")
-            #     conn.close()
-            #     break
+            if not data:  # player disconnected, Ending Game
+                print("player disconnected, ending game")
+                exit()
+            if data == "h":
+                exit()
             player2.send(data.encode())
             print("player 1 send:" + data)
 
@@ -25,10 +26,11 @@ def player2Sync():
     while True:
         try:
             data = player2.recv(1).decode()
-            # if not data:  # player disconnected, Ending Game
-            #     print("player disconnected, ending game")
-            #     conn.close()
-            #     break
+            if not data:  # player disconnected, Ending Game
+                print("player disconnected, ending game")
+                exit()
+            if data == "h":
+                exit()
             
             player1.send(data.encode())
             print("player 2 send:" + data)
