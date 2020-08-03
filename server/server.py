@@ -45,6 +45,7 @@ mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # SOCK_STREAM = TC
 mysocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 mysocket.bind( (ip,port) )
 mysocket.listen(2)
+mysocket.settimeout(60)
 print("Server configuration successful (IP: "+str(ip)+" | Port: "+str(port)+")\n")
 
 print("Waiting for player 1 to connect ...")
